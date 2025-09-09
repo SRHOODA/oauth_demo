@@ -1,0 +1,33 @@
+{% load socialaccount %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Sign in</h1>
+
+    <!-- Traditional email/password (optional) -->
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign in</button>
+    </form>
+
+    <hr>
+    <h3>Or continue with</h3>
+    <p>
+        <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
+        |
+        <a href="{% provider_login_url 'github' %}">Sign in with GitHub</a>
+    </p>
+
+    <p>Don’t have an account?
+        <a href="{% url 'account_signup' %}">Sign up</a>
+    </p>
+</body>
+
+</html>

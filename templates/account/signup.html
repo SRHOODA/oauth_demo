@@ -1,0 +1,29 @@
+{% load socialaccount %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <h1>Create your account</h1>
+    <form method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create account</button>
+    </form>
+
+    <hr>
+    <h3>Or continue with</h3>
+    <p>
+        <a href="{% provider_login_url 'google' %}">Sign up with Google</a>
+        |
+        <a href="{% provider_login_url 'github' %}">Sign up with GitHub</a>
+    </p>
+
+    <p>Already have an account? <a href="{% url 'account_login' %}">Sign in</a></p>
+</body>
+
+</html>
